@@ -1,0 +1,33 @@
+version: 2
+
+models:
+
+    - name: sales
+      tests:
+        - unique:
+            column_name: "(orders_id || '-' || products_id)"
+            
+      columns:
+          - name: orders_id
+            description: unique identifier of each order, first half of the pk
+            tests : 
+            - not_null 
+
+          - name: products_id
+            description: unique identifier of each product, second half of the pk
+            tests:
+            - not_null
+
+          - name: qty
+
+          - name: turnover
+            description: turnover per product within corresponding order
+            tests:
+            - not_null
+
+          - name: purchase_cost
+            description: cost per product within corresponding order
+
+
+          - name: margin
+            description: margin of each product product within corresponding order
